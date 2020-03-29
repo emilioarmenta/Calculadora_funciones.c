@@ -1,27 +1,123 @@
-/*El paso por valor envía una copia de los parámetros a la función por lo tanto los cambios que se hagan en ella no son tomados en cuenta dentro de la función main()*/
-
+/*
+	Autor: Emilio Armenta Hernández
+	Programa: Calculadora_funciones.c
+*/
 #include <stdio.h>
+#include <math.h>
+#include <windows.h>
 
-void sumar_valor(int numero); /* prototipo de la función */
+	//Declaración de variables globales 
+	int opcion;
+	float suma (float n1, float n2);
+	float resta (float n1, float n2);
+	float division(float n1, float n2);
+	float multiplicacion(float n1, float n2);
+	float potencia(float n1, float n2);
+	float raiz(float n1);
+	float resultado=0;
+	
+int main(){
+	//Declaracion de variables locales 
+	int opcion;
+	float n1, n2;
+	
+	do{
+	system("pause");
+	system("cls"); //Limpiar pantalla
+	printf("Elige una opcion:\n");
+	printf("\t 1.- Suma\n");
+	printf("\t 2.- Resta\n");
+	printf("\t 3.- Division\n");
+	printf("\t 4.- Multiplicacion\n");
+	printf("\t 5.- Potencia\n");
+	printf("\t 6.- Raiz cuadrada\n");
+	printf("\t 7.- Salir\n");
+	scanf("%d",&opcion);	
+	system("cls"); //Limpiar pantalla
+	
+	if(opcion==6){
+		printf("\nDame el primer valor: ");
+		scanf("%f", &n1);
+	}
+	else if(opcion>=7){
+		
+	}
+	else{
+		printf("\nDame el primer valor: ");
+		scanf("%f", &n1);
+		printf("\nDame el segundo valor: ");
+		scanf("%f", &n2);
+	}
 
-int main(void)
-{
-	int numero = 57;
-	sumar_valor(numero); /* enviamos numero a la función */
+	//Estructura de control de selección multiple
 
-	printf("Valor de numero dentro de main() es: %d\n", numero);
-	/* podemos notar que el valor de numero se modifica
-	 * sólo dentro de la función sumar_valor pero en la principal
-	 */
+	switch(opcion)
+	{
+	case 1:
+		suma ( n1, n2);
+		break;
+	case 2:
+		resta (n1, n2);
+		break;
+	case 3: 
+		division (n1 , n2);
+		break;
+	case 4: 
+		multiplicacion (n1, n2);
+		break;
+	case 5: 		
+		potencia (n1, n2);
+		break;
+	case 6: 
+		raiz (n1);
+		break;
+	default:
+		printf("Salir");
+		exit(0);
+	}	//Sale break
+	
+}while(opcion<7);
 
-	return 0;
 }
 
-void sumar_valor(int numero)
-{
-	numero++; /* le sumamos 1 al numero */
-
-	printf("Valor de numero dentro sumar_valor() es: %d\n", numero);
-
-	return;
+//Funciones
+float suma (float n1, float n2){ 
+	resultado = n1 + n2;
+	printf("El resultado de la suma es: %.2f\n", resultado);
+	return resultado;
+} 
+float resta (float n1, float n2){
+	resultado = n1 - n2;
+	printf("El resultado de la resta es: %.2f\n", resultado);
+	return resultado;
+}
+float division (float n1, float n2){
+	if(n2==0){
+		printf("La operacion entre 0 no esta definida\n");
+	}
+	else {
+	resultado= n1 / n2;
+	printf("El resultado de la division es: %.2f\n", resultado);
+	return resultado;
+	}
+}
+float multiplicacion (float n1, float n2){
+	resultado = n1 * n2;
+	printf("El resultado de la multiplicacion es: %.2f\n", resultado);
+	return resultado;
+}
+float potencia (float n1, float n2){
+	resultado = pow(n1,n2);
+	printf("El resultado de la potencia es: %.2f\n", resultado);
+	return resultado;
+}
+float raiz (float n1){
+	if(n1<0){
+		printf("No esta definida\n");
+		}
+		else{
+			resultado = sqrt(n1);
+			printf("El resultado de la raiz es: %.2f\n", resultado);
+			return resultado;
+		}
 }
