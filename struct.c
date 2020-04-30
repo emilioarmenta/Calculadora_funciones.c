@@ -18,7 +18,6 @@ void BuscarRegistros();
 struct datos{
     char nombre[60];
     int edad;
-    int IdRegistro;
 	char ciudad[20];   
 } persona[20]; 
  
@@ -62,7 +61,7 @@ void AgregarRegistro(){
    scanf("%d", &reg);
    getchar();
  
-  // int i, numero=0;
+  
    for (i=0; i<reg; i++) 
       {
          puts("Nombre:");
@@ -74,11 +73,9 @@ void AgregarRegistro(){
          puts("Ciudad:");
  	 	fflush(stdin);
  	 	fgets(persona[i].ciudad, 20 , stdin);
- 	 	puts("Id de Registro: ");
- 	 	fflush(stdin);
- 	 	scanf("%d", &persona[i].IdRegistro);
  	 	printf("----------------------------------\n");
-      }
+     	 
+	  }
  
    system("pause");
 }
@@ -91,8 +88,8 @@ void MostrarRegistros(){
 	printf("Los registros ingresados son los siguientes: \n");
 	
 	for (i=0; i<reg; i++) {
-        printf("Registro:%d\n\tNombre:%s\tEdad:%d\n\tCiudad:%s\tId Registro:%d\n",i+1, persona[i].nombre, persona[i].edad, persona[i].ciudad, persona[i].IdRegistro);   
-        //getchar();   
+        printf("Registro:%d\n\tNombre:%s\tEdad:%d\n\tCiudad:%s\t\n",i+1, persona[i].nombre, persona[i].edad, persona[i].ciudad);   
+           
    }
    system("pause");
 }
@@ -102,21 +99,19 @@ void BuscarRegistros(IdRegistro){
 	system("cls");
 	
 
-	int eNum;
 	printf("Que registro deseas buscar?: \n");
 	fflush(stdin);
-	scanf("%d", &eNum);
+	scanf("%d", &i);
 	
-	for (i=0; i<reg; i++) {
+	if(i<=reg){
 	
-	if(persona[20].IdRegistro==eNum){
-
-		printf("\nEl registro si existe\n");
-		printf("Registro:%d\n\tNombre:%s\tEdad:%d\n\tCiudad:%s\tId Registro:%d",i+1, persona[i].nombre, persona[i].edad, persona[i].ciudad, persona[i].IdRegistro);
+	printf("\nEl registro si existe\n");
+	printf("Registro:%d\n\tNombre:%s\tEdad:%d\n\tCiudad:%s\t\n",i, persona[i-1].nombre, persona[i-1].edad, persona[i-1].ciudad);
 
 	}else{
-        printf("\n\tRegistro no encontrado!\n");
-}
+	printf("Registro no existente\n");
+	}
+
+
 system("pause");
-}
 }
